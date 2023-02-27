@@ -5,6 +5,15 @@
     <title>Home</title>
 </head>
 <body>
-<p> This is our first view.</p>
+<p> This is our first view...</p>
+<div style="background-color:teal;color:white;width:100%">
+    <h2 style="bg-color:black;width:100%"><u> Leads Details </u></h2>
+    {% for lead in leads %}
+    <div>
+        <h3><a href="#"> {{lead.first_name}} {{lead.last_name}} </a> : {{lead.age}}</h3>
+    </div>
+    {% endfor %}
+</div>
+
 </body>
 </html>
