@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lead Form</title>
+</head>
+<body>
+<h1> Lead Registration </h1>
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" placeholder="Submit" >
+    </form>
+</div>
+</body>
+</html>
