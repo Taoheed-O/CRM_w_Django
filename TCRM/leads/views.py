@@ -13,4 +13,6 @@ def homepage(request):
 
 
 def lead_details(request, pk):
-    pass
+    details = Lead.objects.get(id=pk)
+    context = {"details":details}
+    return render(request, 'leadlist.html', context)
