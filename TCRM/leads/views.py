@@ -28,3 +28,24 @@ def lead_form(request):
             return redirect('/')
     context = {"form":form}
     return render(request,'lead_form.html',context)
+
+
+
+def lead_update(request, pk):
+    lead = Lead.objects.get(id=pk)
+    form = LeadForm(instance=lead)
+    if request.method == "POST":
+        form = LeadForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {"form":form,
+               "lead":lead}
+    return render(request, 'lead_update.html', context)
+
+
+
+def lead_delete(request, pk):
+    lead = Lead.objects.get(id=pk)
+    lead.delete()
+    return redirect('/')
