@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update Lead</title>
-</head>
+{% extends 'leads/homepage.html' %}
+
+
+{% block content %}
 <body>
 <h1> Update Lead: {{lead.first_name}} {{lead.last_name}} </h1>
 <div>
@@ -14,4 +12,5 @@
     </form>
 </div>
 </body>
-</html>
+
+{% endblock %}

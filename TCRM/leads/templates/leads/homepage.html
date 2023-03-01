@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <p> This is our first view...</p>
-<div style="background-color:teal;color:white;width:100%">
-    <h2 style="bg-color:black;width:100%"><u> Leads Details </u></h2>
+<div class="max-w-4xl bg-gray-100 mx-auto">
+    {% include 'leads/navbar.html' %}
+    {% block content %}
+    <div >
+    <h2><u> Leads Details </u></h2>
     {% for lead in leads %}
     <div>
         <h3><a href="/{{ lead.id }}"> {{lead.first_name}} {{lead.last_name}} </a> : {{lead.age}}</h3>
@@ -16,6 +20,8 @@
     <div>
         <h4><a href="/form">create lead</a></h4>
     </div>
+    </div>
+    {% endblock content %}
 </div>
 
 </body>

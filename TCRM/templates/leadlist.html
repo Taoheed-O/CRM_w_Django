@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>leads list</title>
-</head>
+{% extends 'leads/homepage.html' %}
+
+
+{% block content %}
 <body>
-<div style="background-color:teal;color:white;width:100%">
+<div>
     <h3> ID: {{ details.id }} </h3>
     <h3> First name: {{ details.first_name }} </h3>
     <h3> Last name: {{ details.last_name }} </h3>
@@ -14,7 +12,7 @@
 <div>
     <h4><a href="/">home</a></h4>
     <h4><a href="update">update</a></h4>
+    <h4><a href="delete">delete</a></h4>
 </div>
-
 </body>
-</html>
+{% endblock content %}
