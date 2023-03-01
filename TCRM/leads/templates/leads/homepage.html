@@ -6,10 +6,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<p> This is our first view...</p>
 <div class="max-w-4xl bg-gray-100 mx-auto">
     {% include 'leads/navbar.html' %}
     {% block content %}
+    {% include 'leads/landingpage.html' %}
     <div >
     <h2><u> Leads Details </u></h2>
     {% for lead in leads %}
