@@ -10,17 +10,6 @@
     {% include 'leads/navbar.html' %}
     {% block content %}
     {% include 'leads/landingpage.html' %}
-    <div >
-    <h2><u> Leads Details </u></h2>
-    {% for lead in leads %}
-    <div>
-        <h3><a href="/{{ lead.id }}"> {{lead.first_name}} {{lead.last_name}} </a> : {{lead.age}}</h3>
-    </div>
-    {% endfor %}
-    <div>
-        <h4><a href="/form">create lead</a></h4>
-    </div>
-    </div>
     {% endblock content %}
 </div>
 

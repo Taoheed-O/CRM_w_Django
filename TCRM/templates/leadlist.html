@@ -1,18 +1,15 @@
 {% extends 'leads/homepage.html' %}
 
-
 {% block content %}
-<body>
 <div>
-    <h3> ID: {{ details.id }} </h3>
-    <h3> First name: {{ details.first_name }} </h3>
-    <h3> Last name: {{ details.last_name }} </h3>
-    <h3> Age: {{ details.age}} </h3>
+  <h2><u> Leads </u></h2>
+  {% for lead in leads %}
+  <div>
+    <h3><a href="/{{ lead.id }}"> {{lead.first_name}} {{lead.last_name}} </a> : {{lead.age}}</h3>
+  </div>
+  {% endfor %}
+  <div>
+    <h4><a href="/form">create lead</a></h4>
+  </div>
 </div>
-<div>
-    <h4><a href="/">home</a></h4>
-    <h4><a href="update">update</a></h4>
-    <h4><a href="delete">delete</a></h4>
-</div>
-</body>
 {% endblock content %}

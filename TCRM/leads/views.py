@@ -8,14 +8,18 @@ from .forms import LeadForm
 
 def homepage(request):
     # return HttpResponse("Hello world")
-    leads = Lead.objects.all()
-    context = {"leads":leads}
-    return render(request, 'leads/homepage.html', context)
+    return render(request, 'leads/homepage.html')
 
 
 def lead_details(request, pk):
     details = Lead.objects.get(id=pk)
-    context = {"details":details}
+    context = {"details": details}
+    return render(request, 'leaddetails.html', context)
+
+
+def lead_list(request):
+    leads = Lead.objects.all()
+    context = {"leads": leads}
     return render(request, 'leadlist.html', context)
 
 
@@ -26,9 +30,8 @@ def lead_form(request):
         if form.is_valid():
             form.save()
             return redirect('/')
-    context = {"form":form}
-    return render(request,'lead_form.html',context)
-
+    context = {"form": form}
+    return render(request, 'lead_form.html', context)
 
 
 def lead_update(request, pk):
@@ -38,9 +41,9 @@ def lead_update(request, pk):
         form = LeadForm(request.POST, instance=lead)
         if form.is_valid():
             form.save()
-            return redirect('/')
-    context = {"form":form,
-               "lead":lead}
+            return redirect('/leadlist')
+    context = {"form": form,
+               "lead": lead}
     return render(request, 'lead_update.html', context)
 
 
