@@ -5,6 +5,7 @@ from .forms import LeadForm
 
 # Create your views here.
 
+
 def homepage(request):
     # return HttpResponse("Hello world")
     return render(request, 'leads/homepage.html')
