@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 from django.http import HttpResponse
 from .models import Lead, Agent
 from .forms import LeadForm
 
 # Create your views here.
+
+
+# class HomePage(TemplateView):
+#     template_name = "leads/homepage.html"
 
 
 def homepage(request):
