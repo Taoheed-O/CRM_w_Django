@@ -15,12 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from leads.views import HomePage, LeadListView, LeadDetailsView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomePage.as_view(), name='homepage'),
-    path('leadlist/', LeadListView.as_view(), name='leadlist'),
-    path('<int:pk>/', LeadDetailsView.as_view(), name='lead_details'),
+    path('', include("leads.urls")),
 ]

@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import render, redirect, reverse
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.http import HttpResponse
 from .models import Lead, Agent
 from .forms import LeadForm
@@ -8,40 +8,48 @@ from .forms import LeadForm
 
 
 # CLASS BASED VIEW FOR HOMEPAGE
-class HomePage(TemplateView):
-    template_name = "leads/homepage.html"
+# class HomePage(TemplateView):
+#     template_name = "leads/homepage.html"
 
 
 # FUNCTION BASED VIEW FOR HOMEPAGE
-# def homepage(request):
-#     # return HttpResponse("Hello world")
-#     return render(request, 'leads/homepage.html')
+def homepage(request):
+    # return HttpResponse("Hello world")
+    return render(request, 'leads/homepage.html')
 
 
 # CLASS BASED VIEW FOR DETAILS VIEW
-class LeadDetailsView(DetailView):
-    template_name = "leaddetails.html"
-    queryset = Lead.objects.all()
-    context_object_name = "details"
+# class LeadDetailsView(DetailView):
+#     template_name = "leaddetails.html"
+#     queryset = Lead.objects.all()
+#     context_object_name = "details"
 
 
 # FUNCTION BASED VIEW FOR DETAILS VIEW
-# def lead_details(request, pk):
-#     details = Lead.objects.get(id=pk)
-#     context = {"details": details}
-#     return render(request, 'leaddetails.html', context)
+def lead_details(request, pk):
+    details = Lead.objects.get(id=pk)
+    context = {"details": details}
+    return render(request, 'leaddetails.html', context)
 
 
-class LeadListView(ListView):
-    template_name = "leadlist.html"
-    queryset = Lead.objects.all()
-    context_object_name = "leads"
+# class LeadListView(ListView):
+#     template_name = "leadlist.html"
+#     queryset = Lead.objects.all()
+#     context_object_name = "leads"
 
 
-# def lead_list(request):
-#     leads = Lead.objects.all()
-#     context = {"leads": leads}
-#     return render(request, 'leadlist.html', context)
+def lead_list(request):
+    leads = Lead.objects.all()
+    context = {"leads": leads}
+    return render(request, 'leadlist.html', context)
+
+
+# class LeadCreateView(CreateView):
+#     template_name = "lead_form.html"
+#     lead_form = LeadForm
+
+    # def get_success_url(self):
+    #     return reverse("leadlist")
 
 
 def lead_form(request):
