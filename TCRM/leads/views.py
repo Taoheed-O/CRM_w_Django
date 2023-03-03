@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.http import HttpResponse
 from .models import Lead, Agent
 from .forms import LeadForm
@@ -7,13 +7,13 @@ from .forms import LeadForm
 # Create your views here.
 
 
-# class HomePage(TemplateView):
-#     template_name = "leads/homepage.html"
+class HomePage(TemplateView):
+    template_name = "leads/homepage.html"
 
 
-def homepage(request):
-    # return HttpResponse("Hello world")
-    return render(request, 'leads/homepage.html')
+# def homepage(request):
+#     # return HttpResponse("Hello world")
+#     return render(request, 'leads/homepage.html')
 
 
 def lead_details(request, pk):
@@ -22,10 +22,15 @@ def lead_details(request, pk):
     return render(request, 'leaddetails.html', context)
 
 
-def lead_list(request):
-    leads = Lead.objects.all()
-    context = {"leads": leads}
-    return render(request, 'leadlist.html', context)
+class LeadListView(ListView):
+    template_name = "leadlist.html"
+    queryset = Lead.objects.all()
+
+
+# def lead_list(request):
+#     leads = Lead.objects.all()
+#     context = {"leads": leads}
+#     return render(request, 'leadlist.html', context)
 
 
 def lead_form(request):

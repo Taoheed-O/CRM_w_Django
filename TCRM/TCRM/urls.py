@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from leads.views import HomePage, LeadListView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('leads.urls', namespace="leads")),
+    path('', HomePage.as_view(), name='homepage'),
+    path('leadlist/', LeadListView.as_view(), name='leadlist')
 ]
