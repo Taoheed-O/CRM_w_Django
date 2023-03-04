@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.http import HttpResponse
+from django.core.mail import send_mail
 from .models import Lead, Agent
 from .forms import LeadForm
 
@@ -56,7 +57,12 @@ def lead_form(request):
     form = LeadForm()
     if request.method == "POST":
         form = LeadForm(request.POST)
+        subject = "Welcome to TCRM."
+        message = f"Hi , you are now a lead at TCRM."
+        email_from = "oyeniyiemperor@gmail.com"
+        recipient_list = ["oyeniyiemperor@gmail.com"]
         if form.is_valid():
+            send_mail(subject, message, email_from, recipient_list)
             form.save()
             return redirect('/')
     context = {"form": form}
