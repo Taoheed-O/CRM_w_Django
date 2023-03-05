@@ -4,8 +4,8 @@ from django.shortcuts import reverse
 
 
 class LandingPageTest(TestCase):
-    def response_test(self):
-        response = self.client.get(reverse("homepage"))
+    def test_response(self):
+        response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "leads/homepage.html")
+        self.assertTemplateUsed(response, "registration/login.html")
 
