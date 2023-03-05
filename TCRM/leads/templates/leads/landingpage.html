@@ -12,11 +12,10 @@
           {% endif %}
           {% if request.user.is_authenticated %}
           you are logged in as {{request.user.username}}
+          <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg"><a href="logout">Log Out</a></button>
           {% else %}
           <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg"><a href="login">Log In</a></button>
-          {% endif %}
-          <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg"><a href="#">Log Out</a></button>
-        </div>
+          {% endif %}</div>
       </div>
       <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
         <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
