@@ -3,7 +3,7 @@ from django.views import generic
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from .models import Lead, Agent
-from .forms import LeadForm
+from .forms import LeadForm, CustomerForm
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -12,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class SignupView(generic.CreateView):
     template_name = "registration/signup.html"
-    form_class = UserCreationForm
+    form_class = CustomerForm
 
     def get_success_url(self):
         return reverse("login")
