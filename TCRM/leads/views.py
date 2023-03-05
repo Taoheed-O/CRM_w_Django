@@ -1,12 +1,21 @@
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views import generic
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from .models import Lead, Agent
 from .forms import LeadForm
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
 
+
+class SignupView(generic.CreateView):
+    template_name = "registration/signup.html"
+    form_class = UserCreationForm
+
+    def get_success_url(self):
+        return reverse("login")
 
 # CLASS BASED VIEW FOR HOMEPAGE
 # class HomePage(TemplateView):
@@ -48,9 +57,9 @@ def lead_list(request):
 # class LeadCreateView(CreateView):
 #     template_name = "lead_form.html"
 #     lead_form = LeadForm
-
-    # def get_success_url(self):
-    #     return reverse("leadlist")
+#
+#     def get_success_url(self):
+#         return reverse("leadlist")
 
 
 def lead_form(request):

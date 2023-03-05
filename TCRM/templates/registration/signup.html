@@ -1,0 +1,9 @@
+{% extends 'leads/homepage.html' %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">SignUp</button>
+</form>
+{% endblock %}
