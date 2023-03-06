@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from .models import Lead, Agent
 from .forms import LeadForm, CustomerForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -24,7 +26,6 @@ class SignupView(generic.CreateView):
 
 # FUNCTION BASED VIEW FOR HOMEPAGE
 def homepage(request):
-    # return HttpResponse("Hello world")
     return render(request, 'leads/homepage.html')
 
 
@@ -36,6 +37,7 @@ def homepage(request):
 
 
 # FUNCTION BASED VIEW FOR DETAILS VIEW
+@login_required(login_url='/login')
 def lead_details(request, pk):
     details = Lead.objects.get(id=pk)
     context = {"details": details}
@@ -48,6 +50,7 @@ def lead_details(request, pk):
 #     context_object_name = "leads"
 
 
+@login_required(login_url='/login')
 def lead_list(request):
     leads = Lead.objects.all()
     context = {"leads": leads}
@@ -62,6 +65,7 @@ def lead_list(request):
 #         return reverse("leadlist")
 
 
+@login_required(login_url='/login')
 def lead_form(request):
     form = LeadForm()
     if request.method == "POST":
@@ -78,6 +82,7 @@ def lead_form(request):
     return render(request, 'lead_form.html', context)
 
 
+@login_required(login_url='/login')
 def lead_update(request, pk):
     lead = Lead.objects.get(id=pk)
     form = LeadForm(instance=lead)
@@ -91,6 +96,7 @@ def lead_update(request, pk):
     return render(request, 'lead_update.html', context)
 
 
+@login_required(login_url='/login')
 def lead_delete(request, pk):
     lead = Lead.objects.get(id=pk)
     lead.delete()
