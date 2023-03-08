@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -42,4 +43,11 @@ class Lead(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-    
+
+def post_user_create_signal(sender, instance, created, **kwargs):
+    # print(instance, created)
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+post_save.connect(post_user_create_signal, sender=User)

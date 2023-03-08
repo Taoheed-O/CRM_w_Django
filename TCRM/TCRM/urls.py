@@ -23,7 +23,8 @@ from leads.views import SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("leads.urls")),
+    path('', include("leads.urls", namespace="leads")),
+    path('agents/', include("agents.urls", namespace="agents")),
     path('login/', LoginView.as_view(), name='login'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('logout/', LogoutView.as_view(), name='logout')
