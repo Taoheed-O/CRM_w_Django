@@ -26,7 +26,7 @@ class SignupView(generic.CreateView):
 
 # FUNCTION BASED VIEW FOR HOMEPAGE
 def homepage(request):
-    return render(request, 'leads/homepage.html')
+    return render(request, 'leads/homepage_lead.html')
 
 
 # CLASS BASED VIEW FOR DETAILS VIEW
