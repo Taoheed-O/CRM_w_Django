@@ -1,0 +1,16 @@
+{% extends 'leads/homepage_agent.html' %}
+
+
+{% block content %}
+<body>
+<h1> Agent Registration </h1>
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" placeholder="Submit" >
+    </form>
+     <a href="/agent-list">cancel</a>
+</div>
+</body>
+{% endblock content %}
