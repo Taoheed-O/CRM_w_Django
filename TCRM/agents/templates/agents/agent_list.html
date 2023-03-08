@@ -1,0 +1,13 @@
+{% extends 'leads/homepage.html' %}
+
+{% block content %}
+<body>
+
+    {% for agent in agents %}
+
+    <h4>{{ agent.user.username }}</h4>
+
+    {% endfor %}
+
+</body>
+{% endblock content %}
