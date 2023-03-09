@@ -45,7 +45,7 @@ class Lead(models.Model):
 
 
 def post_user_create_signal(sender, instance, created, **kwargs):
-    # print(instance, created)
+    print(instance, created)
     if created:
         UserProfile.objects.create(user=instance)
 

@@ -13,7 +13,8 @@ class AgentListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "agents"
     
     def get_queryset(self):
-        return Agent.objects.all()
+        organisation = self.request.user.userprofile
+        return Agent.objects.filter(organisation=organisation)
     
 
 
