@@ -24,7 +24,7 @@ class AgentCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = AgentModelForm
 
     def get_success_url(self):
-        return reverse('agents')
+        return reverse('/')
     
     def form_valid(self, form):
         agent = form.save(commit=False)
