@@ -24,7 +24,7 @@ class AgentCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = AgentModelForm
 
     def get_success_url(self):
-        return reverse('/')
+        return reverse('')
     
     def form_valid(self, form):
         agent = form.save(commit=False)
@@ -33,9 +33,21 @@ class AgentCreateView(LoginRequiredMixin, generic.CreateView):
         return super(AgentCreateView, self).form_valid(form)
 
 
+class AgentUpdateView(LoginRequiredMixin, generic.UpdateView):
+    template_name = "agents/agent_update.html"
+    form_class = AgentModelForm
+
+    def get_queryset(self):
+        return Agent.objects.all()
+
+    def get_success_url(self):
+        return reverse('')
+
+
 class AgentDetailView(LoginRequiredMixin,  generic.DetailView):
     template_name = 'agents/agent_detail.html'
     context_object_name = "agents"
 
     def get_queryset(self):
         return Agent.objects.all()
+    
