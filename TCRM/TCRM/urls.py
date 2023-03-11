@@ -19,12 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from leads.views import SignupView
+from agents.views import AgentListView, AgentCreateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("leads.urls", namespace="leads")),
     path('agents/', include("agents.urls", namespace="agents")),
+    path('', AgentListView.as_view(), name="agent_list"),
+    path("form_agent/", AgentCreateView.as_view(), name="agent_form"),
     path('login/', LoginView.as_view(), name='login'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('logout/', LogoutView.as_view(), name='logout')

@@ -24,7 +24,7 @@ class AgentCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = AgentModelForm
 
     def get_success_url(self):
-        return reverse('')
+        return reverse('agent_list')
     
     def form_valid(self, form):
         agent = form.save(commit=False)
@@ -41,7 +41,7 @@ class AgentUpdateView(LoginRequiredMixin, generic.UpdateView):
         return Agent.objects.all()
 
     def get_success_url(self):
-        return reverse('')
+        return reverse('agent_list')
 
 
 class AgentDetailView(LoginRequiredMixin,  generic.DetailView):

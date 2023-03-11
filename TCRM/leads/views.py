@@ -20,13 +20,13 @@ class SignupView(generic.CreateView):
         return reverse("login")
 
 # CLASS BASED VIEW FOR HOMEPAGE
-# class HomePage(TemplateView):
-#     template_name = "leads/homepage.html"
+class HomePage(generic.TemplateView):
+    template_name = "leads/homepage_lead.html"
 
 
 # FUNCTION BASED VIEW FOR HOMEPAGE
-def homepage(request):
-    return render(request, 'leads/homepage_lead.html')
+# def homepage(request):
+#     return render(request, 'leads/homepage_lead.html')
 
 
 # CLASS BASED VIEW FOR DETAILS VIEW
